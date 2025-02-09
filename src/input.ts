@@ -10,7 +10,9 @@ import { number ,totalNumber,
         symbol,
         numberBox,
         calculationNumber,
-        integerJuge} from "./Constant";
+        integerJuge,
+        parentheses
+    } from "./Constant";
 
 
 export function inputNumber(){
@@ -20,15 +22,11 @@ export function inputNumber(){
 
 export function onePiceDeleteNumber(){
     numberBox.pop();
-    console.log(JSON.stringify(numberBox))
     if (oneCut() <=1){ 
         integerJuge.value = true
         inputNumberProcess()
     }
-
 }
-
-
 
 export function inputNumberProcess(){
     let def = 1
@@ -46,7 +44,7 @@ export function inputNumberProcess(){
                 calculationResult.value = totalNumber.value 
                 totalNumber.value = 0
                 StopAction.value = true
-    }
+}
 
 
 
@@ -56,6 +54,7 @@ export function inputSymbol(){
     if( StopAction .value){
         numberRecord.push(calculationResult.value)
     }
+    console.log("数の記録"+JSON.stringify( numberRecord))
     switch(symbol.value){
         case "DEL":
             onePiceDeleteNumber()
@@ -70,7 +69,6 @@ export function inputSymbol(){
         case "X":
             calculationMaine ()
             calculationJuge()
-
             break
         case "÷":
             calculationMaine ()
@@ -91,12 +89,33 @@ export function inputSymbol(){
             decimalPoint.value =  numberBox.length -1
             integerJuge.value = false
             break
-        case "=":
+        case "kakko":
+            //元が0で、1 でかっこ　閉じて0 に戻る
+            parentheses.value = (parentheses.value + 1) % 2;
+            console.log("かっこの判定"+parentheses.value)
+            
+
+            break
+        case "=":   
             calculationResult.value = calculationMaine()
+            getAnwer()
+            break
+        case "pai":
+            //値に3.14して⁼演算を行う。
+            calculationResult.value  = calculationMaine() * 3.14
+            getAnwer()
+            break
     }//動作確認済
-        if(symbol.value !== "DEL" && symbol.value !== ".") {  
+        if(symbol.value !== "DEL" && symbol.value !== "."){  
             numberBox.length = 0
             StopAction.value = false
             integerJuge.value = true//小数処理を整数に戻す
         } 
+}
+
+function getAnwer(){
+    numberRecord.length = 0
+    numberRecord.push(calculationResult.value) 
+    calculationJuge()
+
 }

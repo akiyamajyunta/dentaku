@@ -44,10 +44,10 @@
     <div class="buttonSpace  justify-content">
       <div class="buttonzero" @click="inputNumber()">
         <v-btn class="button" @click="number = 0">0</v-btn>
-        <v-btn class="button" @click="tenTimes = 10">×10</v-btn>
-        <v-btn class="button" @click="pai = 3.14">π</v-btn>
-      </div>    
+      </div>   
       <div class="onotherButton" @click="inputSymbol()">
+          <v-btn class="button" @click="symbol = 'kakko'">【】</v-btn>
+          <v-btn class="button" @click="symbol = 'pai'">π</v-btn>
           <v-btn class="button" @click="symbol='.'">小数</v-btn>
           <v-btn class="button" @click="symbol='='">=</v-btn>
         </div>
@@ -59,7 +59,7 @@
     
     
 <script setup lang="ts">
-import { number,tenTimes,pai ,symbol} from './Constant';
+import { number,symbol} from './Constant';
 import { inputNumber,inputSymbol} from './input';
 
 
@@ -121,11 +121,10 @@ import { inputNumber,inputSymbol} from './input';
 }
 
 .buttonzero{
-  justify-content: center;
   text-align: center;
   align-items: center;
   display: flex;
-  width: 60%;
+  width: 30%;
   height: 100%;
   background-color: rgba(117, 117, 117, 0.632);
 }
@@ -135,7 +134,7 @@ import { inputNumber,inputSymbol} from './input';
   text-align: center;
   align-items: center;
   display: flex;
-  width: 40%;
+  width: 70%;
   height: 100%;
   background-color: rgba(117, 117, 117, 0.632);
 }

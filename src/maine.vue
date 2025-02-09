@@ -36,7 +36,7 @@ import display from './display.vue';
   height: 80%;
   aspect-ratio: 3/ 4;
   background-color: rgb(255, 255, 255);
-  border: 2px solid rgb(0, 255, 13);
+  border: 5px solid rgb(129, 129, 129);
 }
 
 
