@@ -48,7 +48,7 @@
         <v-btn class="button" @click="pai = 3.14">π</v-btn>
       </div>    
       <div class="onotherButton" @click="inputSymbol()">
-          <v-btn class="button" @click="symbol='ANS'">ANS</v-btn>
+          <v-btn class="button" @click="symbol='.'">小数</v-btn>
           <v-btn class="button" @click="symbol='='">=</v-btn>
         </div>
     </div>

@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { numberBox,numberRecord, symbol,calculationSend,calculationNumber } from "./Constant";
+import { numberRecord, symbol,calculationSend,calculationNumber, calculationResult, decimalPoint} from "./Constant";
 import { Symbol } from "typescript";
 
 export function calculationJuge(){
@@ -29,7 +29,13 @@ export function calculationMaine():number{
             return calculationNumber.value
 }
 
+export function oneCut():number{
+    let i = 10 ** (Number((String(calculationResult.value - 1 ).length) - (decimalPoint.value + 1 )) - 2)
 
+        calculationResult.value =  Math.floor((calculationResult.value)*i)/i
+   
+                return i 
+}
 
 
 

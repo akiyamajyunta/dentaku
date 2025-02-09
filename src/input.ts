@@ -1,46 +1,61 @@
 import { ref } from "vue";
-import { calculationJuge,calculationMaine ,} from "./calculation";
+import { calculationJuge,calculationMaine,oneCut} from "./calculation";
 import { number ,totalNumber,
-    calculationSend,
-    calculationResult,
-    calculationKinds,
-    inputJudgement,
-    numberRecord,
-    symbol,
-    numberBox,
-    calculationNumber} from "./Constant";
-
-
+        decimalPoint,
+        calculationSend,
+        calculationResult,
+        calculationKinds,
+        StopAction,
+        numberRecord,
+        symbol,
+        numberBox,
+        calculationNumber,
+        integerJuge} from "./Constant";
 
 
 export function inputNumber(){
     numberBox.push(number.value)
     inputNumberProcess()
 }
+
 export function onePiceDeleteNumber(){
     numberBox.pop();
-    inputNumberProcess()
+    console.log(JSON.stringify(numberBox))
+    if (oneCut() <=1){ 
+        integerJuge.value = true
+        inputNumberProcess()
+    }
+
 }
+
 
 
 export function inputNumberProcess(){
-    for( let i = 0 ; i < numberBox.length  ; i++){
-            totalNumber.value = totalNumber.value *10 + numberBox[i]
-            console.log(totalNumber.value)
+    let def = 1
+        if(integerJuge.value == true){
+            for(let i = 0 ; i < numberBox.length  ; i++){
+                    totalNumber.value = totalNumber.value *10 + numberBox[i]
+                }
+        }else{
+            for(let i = decimalPoint.value ; i < numberBox.length  ; i++){
+                        totalNumber.value =  calculationResult.value
+                        totalNumber.value = Math.floor((totalNumber.value  + numberBox[i] / def)*def)/def
+                        def =  def * 10
+                }
+        }
+                calculationResult.value = totalNumber.value 
+                totalNumber.value = 0
+                StopAction.value = true
     }
-            calculationResult.value = totalNumber.value 
-            totalNumber.value = 0
-            inputJudgement.value = true
-}
+
 
 
 export function inputSymbol(){
     
     calculationKinds.value = symbol.value
-    if(inputJudgement.value){
+    if( StopAction .value){
         numberRecord.push(calculationResult.value)
     }
-    //console.log(JSON.stringify(numberRecord))
     switch(symbol.value){
         case "DEL":
             onePiceDeleteNumber()
@@ -72,12 +87,16 @@ export function inputSymbol(){
             calculationJuge()
 
             break
-        case "ANS":
-            
+        case ".":
+            decimalPoint.value =  numberBox.length -1
+            integerJuge.value = false
             break
         case "=":
             calculationResult.value = calculationMaine()
     }//動作確認済
-        numberBox.length = 0
-        inputJudgement.value = false
-    }
+        if(symbol.value !== "DEL" && symbol.value !== ".") {  
+            numberBox.length = 0
+            StopAction.value = false
+            integerJuge.value = true//小数処理を整数に戻す
+        } 
+}

@@ -15,7 +15,7 @@
     
     
 <script setup lang="ts">
-import { calculationResult ,calculationKinds ,totalNumber} from './Constant';
+import { calculationResult ,calculationKinds } from './Constant';
 
 </script>
 
