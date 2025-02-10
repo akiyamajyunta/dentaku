@@ -1,10 +1,13 @@
 <template>
 <div class="displayPosition">
     <div class="Kinds">
-        {{ calculationKinds }}
+        <p  class="symbol">{{ option }}</p>
+    </div>
+    <div class="Kinds">
+       <p  class="symbol"> {{ method }}</p>
     </div>
     <div class="number">
-        {{ calculationResult }}
+       <p class="numberResult">{{ result }}</p> 
     </div>
 
 </div>
@@ -15,7 +18,7 @@
     
     
 <script setup lang="ts">
-import { calculationResult ,calculationKinds } from './Constant';
+import { result ,method,option } from './Constant';
 
 </script>
 
@@ -34,7 +37,7 @@ import { calculationResult ,calculationKinds } from './Constant';
 .number{
     justify-content: center;
     display: flex;
-    width: 60%;
+    width: 80%;
     height: 80%;
     position: relative;
     top:5%;
@@ -45,7 +48,7 @@ import { calculationResult ,calculationKinds } from './Constant';
 .Kinds{
     justify-content: center;
     display: flex;
-    width: 20%;
+    width: 10%;
     height: 80%;
     position: relative;
     top:5%;
@@ -53,7 +56,17 @@ import { calculationResult ,calculationKinds } from './Constant';
     color: rgb(0, 0, 0);
     border: 2px solid rgb(0, 0, 0);
 }
-    
-    
-    
+.numberResult{
+    position: relative;
+    bottom:50%;
+    font-size: 30px;
+    font-family: 'Century', sans-serif;
+}
+.symbol{
+    position: relative;
+    bottom:50%;
+    font-size: 20px;
+    font-family: 'Century', sans-serif;
+}
+
 </style>

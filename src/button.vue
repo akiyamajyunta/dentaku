@@ -42,11 +42,12 @@
 
   <v-card class="buttonPosition">
     <div class="buttonSpace  justify-content">
-      <div class="buttonzero" @click="inputNumber()">
+      <div class="buttonZero" @click="inputNumber()">
         <v-btn class="button" @click="number = 0">0</v-btn>
+        <v-btn class="button" @click="number = 0" :style="{opacity: 0}">0</v-btn>
       </div>   
       <div class="onotherButton" @click="inputSymbol()">
-          <v-btn class="button" @click="symbol = 'kakko'">【】</v-btn>
+          <v-btn class="button" @click="symbol = '( )'">【】</v-btn>
           <v-btn class="button" @click="symbol = 'pai'">π</v-btn>
           <v-btn class="button" @click="symbol='.'">小数</v-btn>
           <v-btn class="button" @click="symbol='='">=</v-btn>
@@ -78,13 +79,14 @@ import { inputNumber,inputSymbol} from './input';
 }
 
 .buttonSpace{
+  position: relative;
   justify-content: center;
   text-align: center;
   align-items: center;
   display: flex;
   width: 90%;
   height: 100%;
-  background-color: rgba(117, 117, 117, 0.632);
+  background-color: rgba(119, 119, 119, 0.632);
 }
 
 .button{
@@ -107,7 +109,7 @@ import { inputNumber,inputSymbol} from './input';
   display: flex;
   width: 90%;
   height: 100%;
-  background-color: rgba(117, 117, 117, 0.632);
+  background-color: rgba(110, 97, 97, 0);
 }
 
 .buttonCalculation{
@@ -117,26 +119,28 @@ import { inputNumber,inputSymbol} from './input';
   display: flex;
   width: 60%;
   height: 100%;
-  background-color: rgba(117, 117, 117, 0.632);
+  background-color: rgba(110, 95, 95, 0);
 }
 
-.buttonzero{
+.buttonZero{
   text-align: center;
-  align-items: center;
+  position: relative;
+  right:25%;
   display: flex;
-  width: 30%;
+  width: 50%;
   height: 100%;
-  background-color: rgba(117, 117, 117, 0.632);
+  background-color: rgba(117, 117, 117, 0);
 }
 
 .onotherButton{
   justify-content: center;
   text-align: center;
-  align-items: center;
+  position: absolute;
+  left: 25%;
   display: flex;
-  width: 70%;
+  width: 75%;
   height: 100%;
-  background-color: rgba(117, 117, 117, 0.632);
+  background-color: rgba(117, 117, 117, 0);
 }
     
     
