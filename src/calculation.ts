@@ -17,8 +17,8 @@ export function calculationMaine():number{
                 calculationNumber.value   = calculationNumber.value * numberRecord[numberRecord.length - 1] 
         }else if(method.value == "÷"){
                 calculationNumber.value   = calculationNumber.value / numberRecord[numberRecord.length - 1]  
-    }
-            return calculationNumber.value
+        }
+                return calculationNumber.value
 }
 
 
@@ -33,8 +33,8 @@ export function calculationMaineSub():number{
                 calculationNumber.value   = numberRecordSub[0] / result.value
 
         }
-            numberRecord.push(calculationNumber.value )
-            return calculationNumber.value 
+                numberRecord.push(calculationNumber.value )
+                return calculationNumber.value 
 }
 
 
